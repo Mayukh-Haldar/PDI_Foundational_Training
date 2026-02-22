@@ -13,12 +13,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/Mayukh-Haldar/PDI_Foundational_Training.git'
-            }
-        }
-
         stage('Build Flask Server') {
             steps {
                 dir('Week_1/Day_3_and_4/flask_server') {
