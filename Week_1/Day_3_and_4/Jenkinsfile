@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk-21'
+        maven 'maven-3'
+    }
+
+    environment {
+        FLASK_IMAGE = "bookstore-flask"
+        JAVA_IMAGE  = "bookstore-java"
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git 'https://your-repo-url.git'
+            }
+        }
+
+        stage('Build Flask Server') {
+            steps {
+                dir('flask_server') {
+                    bat 'python -m venv venv'
+                    bat 'venv\\Scripts\\pip install -r requirements.txt'
+                }
+            }
+        }
+
+        stage('Build Java Server') {
+            steps {
+                dir('java_server') {
+                    bat 'mvn clean package'
+                }
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                bat 'docker build -t %FLASK_IMAGE% ./flask_server'
+                bat 'docker build -t %JAVA_IMAGE% ./java_server'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                bat 'docker rm -f flask_container || exit 0'
+                bat 'docker rm -f java_container || exit 0'
+
+                bat 'docker run -d -p 5000:8080 --name flask_container %FLASK_IMAGE%'
+                bat 'docker run -d -p 8081:8080 --name java_container %JAVA_IMAGE%'
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                bat 'timeout /t 10'
+                bat 'curl http://localhost:5000/api/v1/ui/'
+                bat 'curl http://localhost:8081/swagger-ui.html'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}

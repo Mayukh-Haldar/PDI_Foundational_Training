@@ -1,0 +1,69 @@
+#################################
+# General
+#################################
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.bak
+
+#################################
+# Python
+#################################
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env/
+.env.*
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+#################################
+# Flask / OpenAPI (Python)
+#################################
+flask_server/openapi_server/__pycache__/
+
+#################################
+# Java / Maven
+#################################
+java_server/target/
+java_server/.mvn/
+*.class
+*.jar
+*.war
+*.ear
+
+#################################
+# OpenAPI Generator Artifacts
+#################################
+.openapi-generator/
+.openapi-generator-ignore
+
+#################################
+# Docker
+#################################
+*.pid
+*.seed
+*.out
+
+#################################
+# OS Specific
+#################################
+*.DS_Store
