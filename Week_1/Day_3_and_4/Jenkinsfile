@@ -4,7 +4,6 @@ pipeline {
     tools {
         jdk 'jdk-21'
         maven 'maven-3'
-        python 'python-3.10'
     }
 
     environment {
@@ -17,8 +16,10 @@ pipeline {
         stage('Build Flask Server') {
             steps {
                 dir('Week_1/Day_3_and_4/flask_server') {
-                    bat 'python -m venv venv'
-                    bat 'venv\\Scripts\\pip install -r requirements.txt'
+                    withPythonEnv('python-3.10') {
+                        bat 'python -m venv venv'
+                        bat 'venv\\Scripts\\pip install -r requirements.txt'
+                    }
                 }
             }
         }
