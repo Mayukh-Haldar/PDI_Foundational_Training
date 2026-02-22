@@ -16,10 +16,8 @@ pipeline {
         stage('Build Flask Server') {
             steps {
                 dir('Week_1/Day_3_and_4/flask_server') {
-                    withPythonEnv('python-3.10') {
-                        bat 'python -m venv venv'
-                        bat 'venv\\Scripts\\pip install -r requirements.txt'
-                    }
+                    bat 'python -m venv venv'
+                    bat 'venv\\Scripts\\pip install -r requirements.txt'
                 }
             }
         }
