@@ -1,4 +1,4 @@
-# 🟢 1️⃣ Start Mongo Shell
+# Start Mongo Shell
 
 If local:
 
@@ -10,7 +10,7 @@ If Atlas, connect using your connection string.
 
 ---
 
-# 🟢 2️⃣ Show Databases
+# Show Databases
 
 ```js
 show dbs;
@@ -18,7 +18,7 @@ show dbs;
 
 ---
 
-# 🟢 3️⃣ Create / Switch Database
+# Create / Switch Database
 
 ```js
 use testdemo;
@@ -34,7 +34,7 @@ db;
 
 ---
 
-# 🟢 4️⃣ Show Collections
+# Show Collections
 
 ```js
 show collections;
@@ -42,7 +42,7 @@ show collections;
 
 ---
 
-# 🟢 5️⃣ Create Collection
+# Create Collection
 
 ```js
 db.createCollection("users");
@@ -56,7 +56,7 @@ show collections;
 
 ---
 
-# 🟢 6️⃣ Insert Data
+# Insert Data
 
 ## Insert One
 
@@ -81,7 +81,7 @@ db.users.insertMany([
 
 ---
 
-# 🟢 7️⃣ Find Data
+# Find Data
 
 ## View All
 
@@ -113,7 +113,7 @@ db.users.find({ name: "arjun" });
 
 ---
 
-# 🟢 8️⃣ Projection (Select Fields)
+# Projection (Select Fields)
 
 Only name:
 
@@ -123,7 +123,7 @@ db.users.find({}, { name: 1, _id: 0 });
 
 ---
 
-# 🟢 9️⃣ Sorting
+# Sorting
 
 Ascending:
 
@@ -139,7 +139,7 @@ db.users.find().sort({ name: -1 });
 
 ---
 
-# 🟢 🔟 Limit Results
+# Limit Results
 
 ```js
 db.users.find().limit(2);
@@ -147,7 +147,7 @@ db.users.find().limit(2);
 
 ---
 
-# 🟢 1️⃣1️⃣ Count Documents
+# Count Documents
 
 ```js
 db.users.countDocuments();
@@ -161,7 +161,7 @@ db.users.countDocuments({ name: "kajal" });
 
 ---
 
-# 🟢 1️⃣2️⃣ Update Operations
+# Update Operations
 
 ## Update One
 
@@ -191,7 +191,7 @@ db.users.find().pretty();
 
 ---
 
-# 🟢 1️⃣3️⃣ Delete Operations
+# Delete Operations
 
 ## Delete One
 
@@ -209,7 +209,7 @@ db.users.deleteMany({ status: "active" });
 
 ---
 
-# 🟢 1️⃣4️⃣ Advanced Queries
+# Advanced Queries
 
 ## Not Equal
 
@@ -240,7 +240,7 @@ db.users.find({ email: /cloudthat/ });
 
 ---
 
-# 🟢 1️⃣5️⃣ Aggregation Example
+# Aggregation Example
 
 Group and count:
 
@@ -257,7 +257,7 @@ db.users.aggregate([
 
 ---
 
-# 🟢 1️⃣6️⃣ Drop Collection
+# Drop Collection
 
 ```js
 db.users.drop();
@@ -265,7 +265,7 @@ db.users.drop();
 
 ---
 
-# 🟢 1️⃣7️⃣ Drop Database
+# Drop Database
 
 ```js
 use testdemo;
@@ -274,7 +274,7 @@ db.dropDatabase();
 
 ---
 
-# 🎯 Full Practice Script (Copy-Paste Ready)
+# Full Practice Script
 
 ```js
 use testdemo;
