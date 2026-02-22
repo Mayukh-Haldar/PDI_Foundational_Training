@@ -584,3 +584,307 @@ This setup successfully delivers:
 * GitHub integration
 * Swagger API documentation access
 * Version-controlled environment setup
+
+---
+
+# 🛠️ Windows System-Level Fixes & Permissions Configuration
+
+During Jenkins + Docker setup on Windows, some additional configurations are required to avoid permission and PATH issues.
+
+---
+
+# ✅ 12. Fix: Jenkins Service Permissions (Log On Configuration)
+
+Sometimes Jenkins cannot access:
+
+* Docker
+* Python
+* Maven
+* System PATH variables
+
+Because it runs as a Windows Service under a restricted account.
+
+---
+
+## 🔹 Step 1 – Open Services
+
+Press:
+
+```
+Win + R → services.msc
+```
+
+Find:
+
+```
+Jenkins
+```
+
+Right click → Properties
+
+---
+
+## 🔹 Step 2 – Change Log On User
+
+Go to:
+
+```
+Log On tab
+```
+
+By default, it runs as:
+
+```
+Local System Account
+```
+
+Change it to:
+
+```
+This account:
+```
+
+Select your Windows user account (e.g., mayukh)
+
+Enter password.
+
+Click Apply.
+
+Restart Jenkins service.
+
+---
+
+### 🎯 Why This Fix Is Important
+
+It allows Jenkins to:
+
+* Access Docker Desktop
+* Access Python installation
+* Access Maven
+* Read system PATH variables
+
+Without this, you may get:
+
+```
+docker not found
+python not recognized
+permission denied
+```
+
+---
+
+# ✅ 13. Add Python to System PATH (Very Important)
+
+If you see:
+
+```
+'python' is not recognized as an internal or external command
+```
+
+Follow these steps:
+
+---
+
+## 🔹 Step 1 – Open Environment Variables
+
+Press:
+
+```
+Win + R → sysdm.cpl
+```
+
+Go to:
+
+```
+Advanced → Environment Variables
+```
+
+---
+
+## 🔹 Step 2 – Add Python to System PATH
+
+Under System Variables → Find:
+
+```
+Path
+```
+
+Click Edit → Add:
+
+```
+C:\Users\<username>\AppData\Local\Programs\Python\Python310
+```
+
+Also add:
+
+```
+C:\Users\<username>\AppData\Local\Programs\Python\Python310\Scripts
+```
+
+Click OK.
+
+Restart system (important).
+
+---
+
+## 🔹 Step 3 – Verify
+
+Open new command prompt:
+
+```
+python --version
+```
+
+It should show:
+
+```
+Python 3.10.x
+```
+
+---
+
+# ✅ 14. Ensure Docker Access from Jenkins
+
+If Jenkins throws:
+
+```
+failed to connect to docker API
+```
+
+Do the following:
+
+---
+
+## 🔹 Step 1 – Start Docker Desktop
+
+Make sure Docker Desktop is running.
+
+Verify:
+
+```
+docker version
+```
+
+---
+
+## 🔹 Step 2 – Enable WSL2 Backend
+
+In Docker Desktop settings:
+
+* General → Enable WSL2 based engine
+
+---
+
+## 🔹 Step 3 – Add User to docker-users Group (Windows)
+
+Press:
+
+```
+Win + R → lusrmgr.msc
+```
+
+Go to:
+
+```
+Groups → docker-users
+```
+
+Add your Windows username.
+
+Restart system.
+
+---
+
+# ✅ 15. Restart Jenkins After Changes
+
+After modifying:
+
+* PATH variables
+* Service Log On user
+* Docker group
+
+Always restart:
+
+```
+services.msc → Jenkins → Restart
+```
+
+Or reboot system.
+
+---
+
+# ✅ 16. Common Windows-Specific Errors & Fixes
+
+---
+
+### ❌ Error: python not recognized
+
+Fix:
+Add Python to System PATH.
+
+---
+
+### ❌ Error: docker not recognized
+
+Fix:
+Add Docker to PATH or restart system.
+
+---
+
+### ❌ Error: Jenkins cannot access Docker
+
+Fix:
+Change Jenkins service Log On user.
+
+---
+
+### ❌ Error: Permission denied during Docker build
+
+Fix:
+Run Jenkins as your local Windows user.
+
+---
+
+### ❌ Error: Environment variables not detected
+
+Fix:
+Restart Jenkins service after adding PATH variables.
+
+---
+
+# 🔐 Security Recommendation
+
+In production:
+
+* Do NOT run Jenkins as Administrator
+* Use a dedicated Jenkins service account
+* Use restricted permissions
+* Use credential binding instead of hardcoding secrets
+
+---
+
+# 🎯 Final Windows Configuration Checklist
+
+✔ Jenkins installed
+✔ JDK 17 configured
+✔ JDK 21 configured
+✔ Maven configured
+✔ Python configured via ShiningPanda
+✔ Python added to System PATH
+✔ Docker Desktop running
+✔ WSL2 backend enabled
+✔ Jenkins service Log On configured
+✔ GitHub credentials stored securely
+✔ Pipeline script path configured correctly
+
+---
+
+# 🏁 Result
+
+After these fixes, Jenkins can:
+
+* Access Docker
+* Access Python
+* Access Maven
+* Execute pipelines without permission errors
+* Build and run containers successfully
