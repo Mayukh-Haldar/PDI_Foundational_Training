@@ -1,0 +1,31 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    height: 60vh;
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+}
+
+.custom-card {
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card {
+    border-radius: 10px;
+    transition: 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Blore Apts",
+    "location": "Bengaluru"
+  },
+  {
+    "id": 2,
+    "name": "Sattva",
+    "location": "Hyderabad"
+  },
+  {
+    "id": 3,
+    "name": "Prestige Apt",
+    "location": "Bengaluru"
+  },
+  {
+    "id": 4,
+    "name": "skylines",
+    "location": "Mumbai"
+  }
+]

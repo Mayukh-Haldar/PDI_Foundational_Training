@@ -1,0 +1,12 @@
+{
+  "name": "app1",
+  "version": "0.1.0",
+  "description": "A demo Application using npm",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mayukh Haldar",
+  "license": "GPL-3.0-or-later",
+  "type": "module"
+}
