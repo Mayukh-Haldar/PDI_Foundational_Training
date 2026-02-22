@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Todo Application</h1>
+    </header>
+
+    <main>
+      <section aria-labelledby="todo-form-heading">
+        <form id="todoForm">
+          <fieldset>
+            <legend id="todo-form-heading">Add a Todo</legend>
+
+            <label for="title">Title</label>
+            <input type="text" id="title" required />
+
+            <label for="description">Description</label>
+            <textarea id="description" required></textarea>
+
+            <button type="submit" class="add-btn" id="submitBtn">
+                Add Todo
+              </button>              
+            <button type="button" id="cancelBtn" style="display: none">
+              Cancel
+            </button>
+          </fieldset>
+        </form>
+
+        <article aria-labelledby="todo-list-heading">
+          <h2 id="todo-list-heading">Todo List</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="todoTable"></tbody>
+          </table>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Mayukh Haldar Todo App</p>
+    </footer>
+    <script>
+        const form = document.getElementById("todoForm");
+        const table = document.getElementById("todoTable");
+        const cancelBtn = document.getElementById("cancelBtn");
+        const submitBtn = document.getElementById("submitBtn");
+      
+        const titleInput = document.getElementById("title");
+        const descriptionInput = document.getElementById("description");
+      
+        let todos = [];
+        let editIndex = null;
+      
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+      
+          const title = titleInput.value.trim();
+          const description = descriptionInput.value.trim();
+      
+          if (!title || !description) return;
+      
+          if (editIndex === null) {
+            todos.push({ title, description });
+          } else {
+            todos[editIndex] = { title, description };
+            editIndex = null;
+            resetEditMode();
+          }
+      
+          form.reset();
+          renderTodos();
+        });
+      
+        function renderTodos() {
+          table.innerHTML = "";
+      
+          todos.forEach((todo, index) => {
+            const row = table.insertRow();
+      
+            row.insertCell(0).innerText = todo.title;
+            row.insertCell(1).innerText = todo.description;
+      
+            const actionCell = row.insertCell(2);
+            actionCell.innerHTML = `
+              <button class="edit-btn" data-index="${index}">Edit</button>
+              <button class="delete-btn" data-index="${index}">Delete</button>
+            `;
+          });
+        }
+      
+        table.addEventListener("click", function (e) {
+          const index = e.target.dataset.index;
+      
+          if (e.target.classList.contains("delete-btn")) {
+            todos.splice(index, 1);
+            renderTodos();
+          }
+      
+          if (e.target.classList.contains("edit-btn")) {
+            titleInput.value = todos[index].title;
+            descriptionInput.value = todos[index].description;
+      
+            editIndex = index;
+            submitBtn.innerText = "Update Todo";
+            cancelBtn.style.display = "inline-block";
+          }
+        });
+      
+        cancelBtn.addEventListener("click", resetEditMode);
+      
+        function resetEditMode() {
+          editIndex = null;
+          form.reset();
+          submitBtn.innerText = "Add Todo";
+          cancelBtn.style.display = "none";
+        }
+      </script>      
+  </body>
+</html>

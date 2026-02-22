@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header style="color: brown; background-color: blue;">
+        <h1>A Simple Contact Form</h1>
+    </header>
+
+    <main>
+        <section>
+            <form action="" enctype="multipart/form-data">
+
+                <fieldset>
+                    <legend>Contact Information</legend>
+
+                    <!-- Full Name -->
+                    <label for="fullname">Full Name:</label>
+                    <input type="text"
+                           id="fullname"
+                           name="fullname"
+                           placeholder="John Doe"
+                           required>
+                    <br><br>
+
+                    <!-- Email -->
+                    <label for="email">Email:</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           placeholder="john.doe@example.com"
+                           required>
+                    <br><br>
+
+                    <!-- Phone -->
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel"
+                           id="phone"
+                           name="phone"
+                           pattern="[0-9]{10}"
+                           placeholder="1234567890"
+                           required>
+                    <small>Format: 1234567890 (10 digits)</small>
+                    <br><br>
+
+                    <!-- Age -->
+                    <label for="age">Age:</label>
+                    <input type="number"
+                           id="age"
+                           name="age"
+                           min="1"
+                           max="120"
+                           required>
+                    <br><br>
+
+                    <!-- City -->
+                    <label for="city">City:</label>
+                    <select id="city" name="city" required>
+                        <option value="">--Please Choose a City--</option>
+                        <option value="Kolkata">Kolkata</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Mysuru">Mysuru</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Pune">Pune</option>
+                    </select>
+                    <br><br>
+
+                    <!-- State -->
+                    <label for="state">State:</label>
+                    <input type="text"
+                           id="state"
+                           name="state"
+                           list="states"
+                           placeholder="Select or type state"
+                           required>
+
+                    <datalist id="states">
+                        <option value="West Bengal">
+                        <option value="Karnataka">
+                        <option value="Andhra Pradesh">
+                        <option value="Telangana">
+                        <option value="Tamil Nadu">
+                    </datalist>
+                    <br><br>
+
+                    <!-- Gender (ARIA Radiogroup) -->
+                    <div role="radiogroup" aria-labelledby="gender-label">
+
+                        <span id="gender-label">Gender:</span>
+                        <br><br>
+
+                        <input role="radio"
+                               type="radio"
+                               id="male"
+                               name="gender"
+                               value="Male"
+                               aria-checked="true"
+                               checked>
+                        <label for="male">Male</label>
+
+                        <input role="radio"
+                               type="radio"
+                               id="female"
+                               name="gender"
+                               value="Female"
+                               aria-checked="false">
+                        <label for="female">Female</label>
+
+                        <input role="radio"
+                               type="radio"
+                               id="other"
+                               name="gender"
+                               value="Other"
+                               aria-checked="false">
+                        <label for="other">Other</label>
+
+                    </div>
+
+                    <br><br>
+
+                    <!-- Profile Picture -->
+                    <label for="profile-pic">Profile Picture:</label>
+                    <input type="file"
+                           id="profile-pic"
+                           name="profile-pic"
+                           accept="image/*"
+                           capture="environment">
+                    <br><br>
+
+                    <!-- Buttons -->
+                    <button type="submit">Send</button>
+                    <button type="reset">Reset</button>
+
+                </fieldset>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mayukh Haldar Contact Form Example</p>
+    </footer>
+
+</body>
+
+</html>

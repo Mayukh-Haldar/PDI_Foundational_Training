@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend>
+                <h1>
+                    Simple Calculator
+                </h1>
+            </legend>
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1">
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2">
+            <label for="op">Operator:</label>
+            <select name="op" id="op">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <button onclick="handleOnClick(event)">Calculate</button>
+        </fieldset>
+    </form>
+    <fieldset>
+        <legend>
+            <h1>
+                Result
+            </h1>
+        </legend>
+        <p id="result"></p>
+    </fieldset>
+    <script>
+
+        function handleOnClick(event) {
+            event.preventDefault();
+        
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let op = document.getElementById("op").value;
+            let res = document.getElementById("result");
+        
+            let answer;
+        
+            switch (op) {
+                case '+':
+                    answer = num1 + num2;
+                    break;
+        
+                case '-':
+                    answer = num1 - num2;
+                    break;
+        
+                case '*':
+                    answer = num1 * num2;
+                    break;
+        
+                case '/':
+                    if (num2 === 0) {
+                        answer = "Cannot divide by zero";
+                    } else {
+                        answer = num1 / num2;
+                    }
+                    break;
+        
+                default:
+                    answer = "Invalid operator";
+            }
+        
+            res.textContent = answer;
+            console.log(res.textContent);
+        }
+    </script>
+</body>
+</html>
