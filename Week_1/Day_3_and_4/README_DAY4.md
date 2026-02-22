@@ -1,4 +1,4 @@
-# 📚 Bookstore CI/CD – Multi-Service DevOps Pipeline: Complete Jenkins Setup & Configuration Guide (Windows)
+# Bookstore CI/CD – Multi-Service DevOps Pipeline: Complete Jenkins Setup & Configuration Guide (Windows)
 
 A complete CI/CD implementation for a microservices-based Bookstore application using:
 
@@ -14,11 +14,11 @@ This section documents the exact system configuration and plugins required to su
 
 ---
 
-# ✅ 1. System Requirements
+# 1. System Requirements
 
 Before installing Jenkins, make sure your system has the following installed:
 
-## 🔹 Required Software
+## Required Software
 
 * Java 17 (minimum)
 * Java 21 (also configured and supported)
@@ -31,7 +31,7 @@ Before installing Jenkins, make sure your system has the following installed:
 ---
 
 
-# 🏗️ Architecture Overview
+# Architecture Overview
 
 GitHub → Jenkins → Build → Dockerize → Run Containers
 
@@ -44,7 +44,7 @@ Both are containerized and deployed automatically via Jenkins Pipeline.
 
 ---
 
-# 🧩 Tech Stack
+# Tech Stack
 
 | Layer             | Technology                  |
 | ----------------- | --------------------------- |
@@ -58,7 +58,7 @@ Both are containerized and deployed automatically via Jenkins Pipeline.
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```
 Week_1/
@@ -73,7 +73,7 @@ Week_1/
       └── Jenkinsfile
 ```
 
-## 2️⃣ Jenkins Pipeline Stages
+## Jenkins Pipeline Stages
 
 Pipeline executes:
 
@@ -87,7 +87,7 @@ Pipeline executes:
 
 ---
 
-# 📊 Example Jenkins Stage View
+# Example Jenkins Stage View
 
 Pipeline successfully builds:
 
@@ -96,11 +96,11 @@ Pipeline successfully builds:
 * Docker Images
 * Running Containers
 
-# 💻 Installation Paths Used in This Setup (Windows)
+# Installation Paths Used in This Setup (Windows)
 
 These are the exact paths configured:
 
-### 🔹 JDK 21
+### JDK 21
 
 Name: jdk-21
 
@@ -109,7 +109,7 @@ Path:
 C:\Users\<user_name>\.jdks\ms-21.0.9
 ```
 
-### 🔹 Maven 3.9
+### Maven 3.9
 Name: maven-3
 
 Path:
@@ -118,7 +118,7 @@ Path:
 C:\Program Files\maven\apache-maven-3.9.12
 ```
 
-### 🔹 Python 3.10
+### Python 3.10
 Name: python-3.10
 
 Path:
@@ -131,7 +131,7 @@ Make sure these paths exist on your system before configuring Jenkins.
 
 ---
 
-# ✅ 2. Install Jenkins (Windows)
+# 2. Install Jenkins (Windows)
 
 ## Step 1 – Install Java
 
@@ -178,7 +178,7 @@ Then:
 
 ---
 
-# ✅ 3. Required Jenkins Plugins
+# 3. Required Jenkins Plugins
 
 Go to:
 
@@ -188,7 +188,7 @@ Install the following plugins:
 
 ---
 
-## 🔹 Core Required
+## Core Required
 
 * Git Plugin
 * GitHub Plugin
@@ -197,27 +197,27 @@ Install the following plugins:
 
 ---
 
-## 🔹 For Docker
+## For Docker
 
 * Docker Plugin
 * Docker Pipeline Plugin
 
 ---
 
-## 🔹 For Java Build
+## For Java Build
 
 * Maven Integration Plugin
 
 ---
 
-## 🔹 For Credentials
+## For Credentials
 
 * Credentials Plugin
 * Credentials Binding Plugin
 
 ---
 
-## 🔹 For Python (Mandatory in this Setup)
+## For Python (Mandatory in this Setup)
 
 * ShiningPanda Plugin
 
@@ -227,7 +227,7 @@ Even though Flask is Dockerized, ShiningPanda was configured for Python tool man
 
 ---
 
-# ✅ 4. Global Tool Configuration
+# 4. Global Tool Configuration
 
 Go to:
 
@@ -235,7 +235,7 @@ Manage Jenkins → Global Tool Configuration
 
 ---
 
-## 🔹 Configure Git
+## Configure Git
 
 Add Git installation:
 
@@ -250,7 +250,7 @@ Auto-detected (usually C:\Program Files\Git\bin\git.exe)
 
 ---
 
-## 🔹 Configure JDK
+## Configure JDK
 
 Add two JDK installations:
 
@@ -270,7 +270,7 @@ C:\Users\<user_name>\.jdks\ms-21.0.9
 
 ---
 
-## 🔹 Configure Maven
+## Configure Maven
 
 Add Maven:
 
@@ -288,7 +288,7 @@ C:\Program Files\maven\apache-maven-3.9.12
 
 ---
 
-## 🔹 Configure Python (ShiningPanda)
+## Configure Python (ShiningPanda)
 
 Add Python installation:
 
@@ -308,7 +308,7 @@ Save configuration.
 
 ---
 
-# ✅ 5. Setup GitHub Credentials (Very Important)
+# 5. Setup GitHub Credentials (Very Important)
 
 ## Step 1 – Create GitHub Personal Access Token
 
@@ -349,7 +349,7 @@ Save.
 
 ---
 
-# ✅ 6. Docker Setup for Jenkins
+# 6. Docker Setup for Jenkins
 
 Jenkins must be able to access Docker daemon.
 
@@ -385,7 +385,7 @@ This allows Jenkins service to communicate with Docker.
 
 ---
 
-# ✅ 7. Create Pipeline Job
+# 7. Create Pipeline Job
 
 Go to:
 
@@ -401,7 +401,7 @@ Click OK.
 
 ---
 
-## 🔹 Pipeline Configuration
+## Pipeline Configuration
 
 Definition:
 
@@ -449,7 +449,7 @@ Click Save.
 
 ---
 
-# ✅ 8. Jenkinsfile Structure (Final Working Setup)
+# 8. Jenkinsfile Structure (Final Working Setup)
 
 Pipeline stages:
 
@@ -468,16 +468,16 @@ Python virtual environment is not required inside Jenkins build steps.
 
 ---
 
-# ✅ 9. Common Errors & Fixes
+# 9. Common Errors & Fixes
 
-## ❌ Git Authentication Failed
+## Git Authentication Failed
 
 Fix:
 Use GitHub Personal Access Token instead of password.
 
 ---
 
-## ❌ Could not find revision master
+## Could not find revision master
 
 Fix:
 Set branch to:
@@ -488,7 +488,7 @@ Set branch to:
 
 ---
 
-## ❌ Python ast.Str Error
+## Python ast.Str Error
 
 Cause:
 Using Python latest (3.14)
@@ -504,7 +504,7 @@ Never use latest tag.
 
 ---
 
-## ❌ Docker Daemon Not Running
+## Docker Daemon Not Running
 
 Error:
 
@@ -517,7 +517,7 @@ Start Docker Desktop.
 
 ---
 
-## ❌ Containers Not Running Together
+## Containers Not Running Together
 
 Cause:
 Flask container crashed due to incompatible Python version.
@@ -527,7 +527,7 @@ Pin Python to 3.10.
 
 ---
 
-# ✅ 10. Final Working Architecture
+# 10. Final Working Architecture
 
 Pipeline Flow:
 
@@ -560,7 +560,7 @@ http://localhost:8081/swagger-ui/index.html
 
 ---
 
-# ✅ 11. Production Best Practices
+# 11. Production Best Practices
 
 * Always pin Docker base image versions
 * Never use latest tag
@@ -572,7 +572,7 @@ http://localhost:8081/swagger-ui/index.html
 
 ---
 
-# 🎯 Final Result
+# Final Result
 
 This setup successfully delivers:
 
@@ -587,13 +587,13 @@ This setup successfully delivers:
 
 ---
 
-# 🛠️ Windows System-Level Fixes & Permissions Configuration
+# Windows System-Level Fixes & Permissions Configuration
 
 During Jenkins + Docker setup on Windows, some additional configurations are required to avoid permission and PATH issues.
 
 ---
 
-# ✅ 12. Fix: Jenkins Service Permissions (Log On Configuration)
+# 12. Fix: Jenkins Service Permissions (Log On Configuration)
 
 Sometimes Jenkins cannot access:
 
@@ -606,7 +606,7 @@ Because it runs as a Windows Service under a restricted account.
 
 ---
 
-## 🔹 Step 1 – Open Services
+## Step 1 – Open Services
 
 Press:
 
@@ -624,7 +624,7 @@ Right click → Properties
 
 ---
 
-## 🔹 Step 2 – Change Log On User
+## Step 2 – Change Log On User
 
 Go to:
 
@@ -654,7 +654,7 @@ Restart Jenkins service.
 
 ---
 
-### 🎯 Why This Fix Is Important
+### Why This Fix Is Important
 
 It allows Jenkins to:
 
@@ -673,7 +673,7 @@ permission denied
 
 ---
 
-# ✅ 13. Add Python to System PATH (Very Important)
+# 13. Add Python to System PATH (Very Important)
 
 If you see:
 
@@ -685,7 +685,7 @@ Follow these steps:
 
 ---
 
-## 🔹 Step 1 – Open Environment Variables
+## Step 1 – Open Environment Variables
 
 Press:
 
@@ -701,7 +701,7 @@ Advanced → Environment Variables
 
 ---
 
-## 🔹 Step 2 – Add Python to System PATH
+## Step 2 – Add Python to System PATH
 
 Under System Variables → Find:
 
@@ -727,7 +727,7 @@ Restart system (important).
 
 ---
 
-## 🔹 Step 3 – Verify
+## Step 3 – Verify
 
 Open new command prompt:
 
@@ -743,7 +743,7 @@ Python 3.10.x
 
 ---
 
-# ✅ 14. Ensure Docker Access from Jenkins
+# 14. Ensure Docker Access from Jenkins
 
 If Jenkins throws:
 
@@ -755,7 +755,7 @@ Do the following:
 
 ---
 
-## 🔹 Step 1 – Start Docker Desktop
+## Step 1 – Start Docker Desktop
 
 Make sure Docker Desktop is running.
 
@@ -767,7 +767,7 @@ docker version
 
 ---
 
-## 🔹 Step 2 – Enable WSL2 Backend
+## Step 2 – Enable WSL2 Backend
 
 In Docker Desktop settings:
 
@@ -775,7 +775,7 @@ In Docker Desktop settings:
 
 ---
 
-## 🔹 Step 3 – Add User to docker-users Group (Windows)
+## Step 3 – Add User to docker-users Group (Windows)
 
 Press:
 
@@ -795,7 +795,7 @@ Restart system.
 
 ---
 
-# ✅ 15. Restart Jenkins After Changes
+# 15. Restart Jenkins After Changes
 
 After modifying:
 
@@ -813,46 +813,46 @@ Or reboot system.
 
 ---
 
-# ✅ 16. Common Windows-Specific Errors & Fixes
+# 16. Common Windows-Specific Errors & Fixes
 
 ---
 
-### ❌ Error: python not recognized
+### Error: python not recognized
 
 Fix:
 Add Python to System PATH.
 
 ---
 
-### ❌ Error: docker not recognized
+### Error: docker not recognized
 
 Fix:
 Add Docker to PATH or restart system.
 
 ---
 
-### ❌ Error: Jenkins cannot access Docker
+### Error: Jenkins cannot access Docker
 
 Fix:
 Change Jenkins service Log On user.
 
 ---
 
-### ❌ Error: Permission denied during Docker build
+### Error: Permission denied during Docker build
 
 Fix:
 Run Jenkins as your local Windows user.
 
 ---
 
-### ❌ Error: Environment variables not detected
+### Error: Environment variables not detected
 
 Fix:
 Restart Jenkins service after adding PATH variables.
 
 ---
 
-# 🔐 Security Recommendation
+# Security Recommendation
 
 In production:
 
@@ -863,7 +863,7 @@ In production:
 
 ---
 
-# 🎯 Final Windows Configuration Checklist
+# Final Windows Configuration Checklist
 
 ✔ Jenkins installed
 ✔ JDK 17 configured
@@ -879,7 +879,7 @@ In production:
 
 ---
 
-# 🏁 Result
+# Result
 
 After these fixes, Jenkins can:
 
